@@ -39,14 +39,14 @@ module.exports = {
         use: ['file-loader']
       },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      {
-        test: /\.js$/,
-        loader: 'eslint-loader',
-        // 在webpack编译之前进行检测
-        enforce: 'pre',
-        // 指定检查的目录
-        include: [path.resolve(__dirname, 'src')]
-      }
+      // {
+      //   test: /\.js$/,
+      //   loader: 'eslint-loader',
+      //   // 在webpack编译之前进行检测
+      //   enforce: 'pre',
+      //   // 指定检查的目录
+      //   include: [path.resolve(__dirname, 'src')]
+      // }
     ]
   }
 };
