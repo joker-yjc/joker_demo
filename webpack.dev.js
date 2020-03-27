@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Autor: Yao
+ * @Date: 2019-11-06 15:31:24
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-03-27 12:07:06
+ */
 const webpack = require('webpack');
 const path = require('path');
 // 更新html
@@ -10,7 +17,7 @@ module.exports = {
   output: {
     filename: 'main.[hash].js',
     path: path.resolve(__dirname, 'dist'),
-    chunkFilename: '[name].[hash].js'
+    chunkFilename: '[name].[hash].js',
   },
   // 追踪源文件
   devtool: 'inline-source-map',
@@ -22,7 +29,6 @@ module.exports = {
     new ManifestPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'webpack',
       template: './public/index.html'
     }),
     new webpack.NamedModulesPlugin(),
