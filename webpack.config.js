@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-01 09:44:11
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-27 11:57:57
+ * @LastEditTime: 2020-03-30 17:40:56
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -13,6 +13,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: "production",
   entry: "./src/index.js",
@@ -35,7 +36,14 @@ module.exports = {
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
     // new webpack.NamedModulesPlugin(),
     // new webpack.HotModuleReplacementPlugin(),
-    new UglifyJSPlugin({ sourceMap: true })
+    new UglifyJSPlugin({ sourceMap: true }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, './lib/static'),
+        to: './static',
+        ignore: ['.*']
+      },
+    ]),
   ],
   module: {
     rules: [

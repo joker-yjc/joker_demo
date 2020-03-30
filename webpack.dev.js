@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-06 15:31:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-27 12:07:06
+ * @LastEditTime: 2020-03-30 17:41:17
  */
 const webpack = require('webpack');
 const path = require('path');
@@ -12,6 +12,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 每次打包后清理dist
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -32,7 +33,14 @@ module.exports = {
       template: './public/index.html'
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, './lib/static'),
+        to: './static',
+        ignore: ['.*']
+      },
+    ]),
   ],
   module: {
     rules: [
