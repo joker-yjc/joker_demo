@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-01 09:44:11
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-30 17:40:56
+ * @LastEditTime: 2020-03-31 13:49:32
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -31,15 +31,12 @@ module.exports = {
   // 追踪源文件
   // devtool: 'source-map',
   plugins: [
-    // new ManifestPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
-    // new webpack.NamedModulesPlugin(),
-    // new webpack.HotModuleReplacementPlugin(),
     new UglifyJSPlugin({ sourceMap: true }),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, './lib/static'),
+        from: path.resolve(__dirname, './static'),
         to: './static',
         ignore: ['.*']
       },

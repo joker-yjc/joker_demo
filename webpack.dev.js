@@ -36,7 +36,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, './lib/static'),
+        from: path.resolve(__dirname, './static'),
         to: './static',
         ignore: ['.*']
       },
