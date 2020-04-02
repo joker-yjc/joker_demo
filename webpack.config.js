@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-01 09:44:11
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-31 13:49:32
+ * @LastEditTime: 2020-03-31 14:00:01
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -17,10 +17,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: "production",
   entry: "./src/index.js",
-  // entry:{
-  //   index:'./src/index.js',
-  //   app:'./src/x.js'
-  // },
   output: {
     filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist"),
