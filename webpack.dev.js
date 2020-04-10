@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-06 15:31:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 17:34:56
+ * @LastEditTime: 2020-04-10 18:15:44
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -25,6 +25,7 @@ module.exports = {
   devServer: {
     contentBase: "./dist",
     hot: true,
+    host:'0.0.0.0'
   },
   plugins: [
     new VueLoaderPlugin(),
