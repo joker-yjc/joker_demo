@@ -1,30 +1,36 @@
 /*
- * @Description:
+ * @Description: 
  * @Author: Yao
- * @Date: 2020-04-10 13:02:29
+ * @Date: 2020-04-10 17:13:07
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 13:59:55
+ * @LastEditTime: 2020-04-10 17:21:44
  */
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es6: true
   },
-  extends: ["plugin:vue/essential", "standard", 'plugin:prettier/recommended'],
+  extends: [
+    'plugin:vue/essential',
+    'standard',
+    'prettier'
+  ],
   globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly'
   },
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module",
+    sourceType: 'module'
   },
-  plugins: ["vue"],
+  plugins: [
+    'vue',
+    'prettier'
+  ],
   rules: {
     "prettier/prettier": "error",
-    // allow async-await
-    "generator-star-spacing": "off",
+    'generator-star-spacing': 'off',
     // allow debugger during development
-    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-  },
-};
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+  }
+}

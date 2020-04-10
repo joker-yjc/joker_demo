@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-06 15:31:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 13:50:10
+ * @LastEditTime: 2020-04-10 17:34:56
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -11,8 +11,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // 每次打包后清理dist
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const ManifestPlugin = require("webpack-manifest-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -27,7 +27,7 @@ module.exports = {
     hot: true,
   },
   plugins: [
-    // new ManifestPlugin(),
+    new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
@@ -44,6 +44,10 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',

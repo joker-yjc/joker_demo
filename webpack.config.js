@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-01 09:44:11
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-09 18:09:25
+ * @LastEditTime: 2020-04-10 17:41:51
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -11,8 +11,8 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // 每次打包后清理dist
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   mode: "production",
   entry: "./src/index.js",
@@ -23,9 +23,9 @@ module.exports = {
     libraryTarget: "umd",
   },
   plugins: [
+    new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
-    new UglifyJSPlugin({ sourceMap: true }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, "./static"),
@@ -36,6 +36,10 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
