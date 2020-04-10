@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-06 15:31:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-09 18:16:44
+ * @LastEditTime: 2020-04-10 13:50:10
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -45,6 +45,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [path.join(__dirname, 'src')],
+        options: {
+          fix: true
+        }
+      },
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
@@ -66,15 +75,7 @@ module.exports = {
             loader: "sass-loader", // 将 Sass 编译成 CSS
           },
         ],
-      },
-      // {
-      //   test: /\.js$/,
-      //   loader: 'eslint-loader',
-      //   // 在webpack编译之前进行检测
-      //   enforce: 'pre',
-      //   // 指定检查的目录
-      //   include: [path.resolve(__dirname, 'src')]
-      // }
+      }
     ],
   },
 };

@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-01 09:33:43
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-02 15:02:13
+ * @LastEditTime: 2020-04-10 11:36:46
  */
 
 
@@ -42,5 +42,5 @@
 // import './y'
 
 // import './styles/index.css'
-
-import './ajax/requst.js'
+console.log(1)
+import "./ajax/requst.js"
