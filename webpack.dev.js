@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-06 15:31:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 18:15:44
+ * @LastEditTime: 2020-04-11 10:43:29
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -23,7 +23,7 @@ module.exports = {
   // 追踪源文件
   devtool: "inline-source-map",
   devServer: {
-    contentBase: "./dist",
+    contentBase: path.resolve(__dirname,'dist'),
     hot: true,
     host:'0.0.0.0'
   },

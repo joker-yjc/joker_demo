@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Author: Yao
+ * @Date: 2020-04-10 17:27:18
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-04-11 10:16:45
+ -->
 <template>
   <div style="text-align: center;">
     app.vue
