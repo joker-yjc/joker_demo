@@ -3,7 +3,7 @@
  * @Author: Yao
  * @Date: 2020-04-02 14:47:29
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-10 17:21:13
+ * @LastEditTime: 2020-04-24 09:38:01
  */
 import { addressConfig } from '../config'
 export function testPath(path) {
@@ -27,6 +27,4 @@ export function testPath(path) {
   return fullPath || new Error('未找到对应的url请补充')
 }
 
-// const fullPath = testPath('api2/getlist12')
-// console.log(fullPath)
 console.log(process.env.NODE_ENV)
