@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-01 09:44:11
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-22 17:02:44
+ * @LastEditTime: 2020-05-07 17:15:04
  */
 
 const webpack = require("webpack");
@@ -17,6 +17,13 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   mode: "production",
   entry: "./src/index.js",
+  resolve:{
+    extensions: [".js", ".vue",".json"],
+    mainFiles: ["index"],
+    alias:{
+      '@':path.resolve(__dirname,'./src')
+    }
+  },
   output: {
     filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist"),

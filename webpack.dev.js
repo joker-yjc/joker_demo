@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-06 15:31:24
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-04-11 10:43:29
+ * @LastEditTime: 2020-05-07 17:18:14
  */
 const webpack = require("webpack");
 const path = require("path");
@@ -13,8 +13,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+console.log(path.resolve(__dirname,'./src'))
 module.exports = {
+  mode:"development",
   entry: "./src/index.js",
+  resolve:{
+    extensions: [".js", ".vue",".json"],
+    mainFiles: ["index"],
+    alias:{
+      '@':path.resolve(__dirname,'./src')
+    }
+  },
   output: {
     filename: "main.[hash].js",
     path: path.resolve(__dirname, "dist"),
