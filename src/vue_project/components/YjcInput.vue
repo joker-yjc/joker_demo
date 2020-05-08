@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: Yao
  * @Date: 2020-05-07 16:53:46
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-05-07 18:07:45
+ * @LastEditors: joker_yjc
+ * @LastEditTime: 2020-05-08 14:51:43
  -->
 <template>
   <div style="margin: 10px 0;">
@@ -13,7 +13,6 @@
       :placeholder="$attrs.placeholder"
       @change="handleChange"
     />
-    <span>1</span>
   </div>
 </template>
 <script>
