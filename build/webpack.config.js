@@ -1,10 +1,11 @@
 /*
  * @Description:
  * @Autor: Yao
- * @Date: 2019-11-06 15:31:24
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-05-07 17:18:14
+ * @Date: 2019-11-01 09:44:11
+ * @LastEditors: joker_yjc
+ * @LastEditTime: 2020-05-09 16:08:03
  */
+
 const webpack = require("webpack");
 const path = require("path");
 // 更新html
@@ -13,37 +14,26 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-console.log(path.resolve(__dirname,'./src'))
 module.exports = {
-  mode:"development",
+  // mode: "production",
   entry: "./src/index.js",
   resolve:{
     extensions: [".js", ".vue",".json"],
     mainFiles: ["index"],
     alias:{
-      '@':path.resolve(__dirname,'./src')
+      '@':path.resolve(__dirname,'../src')
     }
   },
   output: {
-    filename: "main.[hash].js",
+    filename: "[name].[hash].js",
     path: path.resolve(__dirname, "dist"),
     chunkFilename: "[name].[hash].js",
-  },
-  // 追踪源文件
-  devtool: "inline-source-map",
-  devServer: {
-    contentBase: path.resolve(__dirname,'dist'),
-    hot: true,
-    host:'0.0.0.0'
+    libraryTarget: "umd",
   },
   plugins: [
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, "./static"),
@@ -59,21 +49,20 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [path.join(__dirname, 'src')],
-        options: {
-          fix: true
-        }
-      },
-      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: ["file-loader"],
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[hash:8].[ext]",
+              outputPath: "images",
+            },
+          },
+        ],
       },
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
       {
@@ -89,7 +78,7 @@ module.exports = {
             loader: "sass-loader", // 将 Sass 编译成 CSS
           },
         ],
-      }
+      },
     ],
   },
 };

@@ -4,7 +4,7 @@
   "description": "一个代码实验室项目",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "webpack-dev-server --open --config build/webpack.dev.js",
     "build": "webpack"
   },
   "keywords": [],
