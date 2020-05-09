@@ -3,11 +3,11 @@
  * @Autor: Yao
  * @Date: 2019-11-01 09:33:43
  * @LastEditors: joker_yjc
- * @LastEditTime: 2020-05-09 13:01:18
+ * @LastEditTime: 2020-05-09 13:02:46
  */
 import Vue from 'vue'
 import app from './vue_project/app.vue'
-console.log(process.env.NODE_ENV,test)
+console.log(process.env.NODE_ENV,'test')
 
 // //commonjs输出的是值的拷贝
 // // ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析的时候，遇到模块加载命令import，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。
