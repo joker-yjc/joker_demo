@@ -2,8 +2,8 @@
  * @Description:
  * @Autor: Yao
  * @Date: 2019-11-01 09:44:11
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-05-07 17:15:04
+ * @LastEditors: joker_yjc
+ * @LastEditTime: 2020-05-09 10:17:11
  */
 
 const webpack = require("webpack");
@@ -15,7 +15,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
-  mode: "production",
+  // mode: "production",
   entry: "./src/index.js",
   resolve:{
     extensions: [".js", ".vue",".json"],
