@@ -1,37 +1,40 @@
-<!--
- * @Description: 
- * @Author: Yao
- * @Date: 2020-04-10 17:27:18
- * @LastEditors: joker_yjc
- * @LastEditTime: 2020-05-11 11:37:17
- -->
 <template>
-  <div style="text-align: center;height:100%">
-    <button @click="handleToggle">toggle</button>
+  <div style="text-align: center;height:100%;padding:15px">
+    <button @click="showMessage">show message</button>
+    <!-- <button @click="handleToggle">toggle</button> -->
     <!-- <YjcInput
       v-model="value"
       @change="handleChange"
       placeholder="请输入placeholder"
     />
     <img src="@/images/joker.jpg" style="height: 100px;" alt="" srcset="" /> -->
-    <iframe :src="iSrc" frameborder="0" style="height:100%;width:100%"></iframe>
+    <!-- <Message type="warn">
+      消息通知
+    </Message> -->
   </div>
 </template>
 <script>
 import YjcInput from './components/YjcInput'
+// import Message from './components/Message.vue'
 import '@/ajax/requst.js'
+import {message} from './components/message.js'
 export default {
   data() {
     return {
       value: '',
-      iSrc:"http://0.0.0.0:8086/statistics/index.html"
+      
     }
   },
   watch: {},
   components: {
     YjcInput,
+    // Message
   },
   methods: {
+    showMessage(){
+      console.log(this.$el) 
+      message.error('123')
+    },
     handleToggle(){
       console.log(this.iSrc)
       this.iSrc==="http://0.0.0.0:8086/statistics/index.html"?
