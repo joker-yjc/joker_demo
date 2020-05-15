@@ -4,10 +4,10 @@
       <router-link to="/">home</router-link>|
       <router-link to="/about">about</router-link>|
       <router-link to="/list">list</router-link>
-      <div>
+      <!-- <div>
         <router-link to="/vue/">vue</router-link>|
         <router-link to="/vue/about">vue/about</router-link>
-      </div>
+      </div> -->
     </div>
     <router-view v-show="$route.name"></router-view>
     <div v-show="!$route.name" id="iframe"></div>

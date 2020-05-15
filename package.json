@@ -47,6 +47,7 @@
     "axios": "^0.19.2",
     "lodash": "^4.17.15",
     "nearby-common": "git+https://e.coding.net/lltc/nearby-fe-common.git",
+    "nodejs-websocket": "^1.7.2",
     "qiankun": "^2.0.11",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.2",
