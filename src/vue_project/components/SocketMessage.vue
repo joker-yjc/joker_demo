@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <!-- websocket中间件 -->
-  </div>
+  
 </template>
 <script>
 export default {
