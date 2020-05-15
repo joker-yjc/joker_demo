@@ -1,5 +1,11 @@
+<!--
+ * @Date: 2020-05-15 11:19:57
+ * @LastEditors: joker_yjc
+ * @LastEditTime: 2020-05-15 16:50:47
+ * @Desciption: 一个用于websocket链接的中间件
+--> 
+
 <template>
-  
 </template>
 <script>
 export default {

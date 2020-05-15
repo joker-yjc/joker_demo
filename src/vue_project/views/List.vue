@@ -1,10 +1,9 @@
 <template>
   <div>
-    <socket-message @message="handleMessage" ref="socket" />
-    <!-- <button @click="startSocket">连接Socket</button> -->
+    <!-- <socket-message @message="handleMessage" ref="socket" /> -->
     <br />
     <hr />
-    <textarea v-model="msg" cols="30" rows="10"></textarea>
+    <richTextEditor v-model="msg"/>
     <button @click="e=>sendMessage()">发送信息</button>
     <div>
       <ul>
@@ -15,7 +14,7 @@
 </template>
 <script>
 import socketMessage from '../components/SocketMessage.vue'
-
+import richTextEditor from '../components/RichTextEditor.vue'
 export default {
   data() {
     return { 
@@ -23,16 +22,16 @@ export default {
       msgList:[]
     }
   },
-  components:{socketMessage},
+  components:{socketMessage,richTextEditor},
   methods:{
     handleMessage(str){
       this.msgList.push(str)
     },
     sendMessage(str=this.msg){
       if(str){
-        // console.log(str)
-        this.$refs.socket&&this.$refs.socket.sendMessage(str)
-        this.msg=''
+        console.log(str)
+        // this.$refs.socket&&this.$refs.socket.sendMessage(str)
+        // this.msg=''
       }
     }
   }

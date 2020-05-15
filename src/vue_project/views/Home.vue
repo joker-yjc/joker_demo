@@ -16,17 +16,13 @@
   </div>
 </template>
 <script>
-import YjcInput from '../components/YjcInput'
-import { message } from '../components/message.js'
+import { message } from '../components/Message'
 
 export default {
   data() {
     return {
       value: '',
     }
-  },
-  components: {
-    YjcInput,
   },
   methods: {
     showMessage() {

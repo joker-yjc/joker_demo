@@ -1,7 +1,7 @@
 {
-  "name": "webpack-zip",
+  "name": "joker_demo",
   "version": "1.0.0",
-  "description": "一个代码实验室项目",
+  "description": "一个实验代码项目",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --config build/webpack.dev.js",
@@ -49,6 +49,7 @@
     "nearby-common": "git+https://e.coding.net/lltc/nearby-fe-common.git",
     "nodejs-websocket": "^1.7.2",
     "qiankun": "^2.0.11",
+    "tinymce": "^5.2.2",
     "vue": "^2.6.11",
     "vue-loader": "^15.9.2",
     "vue-router": "^3.1.6",
