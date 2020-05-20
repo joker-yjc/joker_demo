@@ -3,7 +3,7 @@
  * @Autor: Yao
  * @Date: 2019-11-06 15:31:24
  * @LastEditors: joker_yjc
- * @LastEditTime: 2020-05-14 17:38:46
+ * @LastEditTime: 2020-05-19 11:57:47
  */
 const webpack = require('webpack')
 const path = require('path')
@@ -52,7 +52,7 @@ module.exports = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './public/index.html'
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
