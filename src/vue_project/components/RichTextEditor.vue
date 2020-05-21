@@ -1,20 +1,16 @@
-<!--
- * @Date: 2020-05-15 16:34:13
- * @LastEditors: joker_yjc
- * @LastEditTime: 2020-05-15 16:49:35
- * @Desciption: 一个基于tinymce的富文本编辑器插件
---> 
 <template>
   <div id="editorCom">
-    <textarea :id="id" :value="value"></textarea>
+    <textarea :id="id"></textarea>
   </div>
 </template>
 <script>
 import tinymce from 'tinymce'
-import "tinymce/skins/ui/oxide/skin.css";
-import "tinymce/skins/ui/oxide/content.css";
+import 'tinymce/skins/ui/oxide/skin.min.css'
+// import 'tinymce/skins/ui/oxide/content.min.css'
+// import 'tinymce/skins/content/default/content.css'
 import 'tinymce/themes/silver/theme'
 import 'tinymce/plugins/image'
+import 'tinymce/plugins/imagetools'
 import 'tinymce/plugins/media'
 import 'tinymce/plugins/table'
 import 'tinymce/plugins/lists'
@@ -22,34 +18,33 @@ import 'tinymce/plugins/contextmenu'
 import 'tinymce/plugins/wordcount'
 import 'tinymce/plugins/colorpicker'
 import 'tinymce/plugins/textcolor'
-import 'tinymce/plugins/code'
-import 'tinymce/plugins/anchor'
+// import 'tinymce/plugins/code'
+// import 'tinymce/plugins/anchor'
 import 'tinymce/plugins/hr'
 import 'tinymce/plugins/fullpage'
 import 'tinymce/plugins/preview'
-import 'tinymce/plugins/autosave'
+// import 'tinymce/plugins/autosave'
 import 'tinymce/plugins/charmap'
-import 'tinymce/plugins/codesample'
 import 'tinymce/plugins/advlist'
 import 'tinymce/plugins/autolink'
 import 'tinymce/plugins/link'
 import 'tinymce/plugins/searchreplace'
 import 'tinymce/plugins/autoresize'
+import 'tinymce/plugins/paste'
 
 export default {
   name: 'richEditor',
-  data() {
-    return {
-      textValue: '',
-    }
-  },
   methods: {
     initEditor() {
-     tinymce.init(this.option)
+      tinymce.init(this.option)
     },
     // 获取内容
     getContent() {
       return tinymce.editors[this.id].getContent()
+    },
+    // 设置内容
+    setContent(content){
+      return tinymce.editors[this.id].setContent(content)
     },
     // 插入内容
     addHtml(val) {
@@ -68,24 +63,21 @@ export default {
     }
   },
   props: {
-    value:{
-      type:String
-    },
+    // id
     id: {
       type: String,
       default: 'editor' + Date.now(),
     },
     plugins: {
       type: String,
-      default:
-        'anchor hr fullpage preview autosave charmap code  codesample  advlist autolink link image lists preview  media searchreplace table  autoresize',
+      default:'paste hr fullpage charmap advlist autolink link image imagetools lists preview  media searchreplace table  autoresize',
     },
     toolbar: {
       type: Array,
       default: function () {
         return [
-          'undo redo anchor image |forecolor backcolor bold italic underline strikethrough link fontsizeselect styleselect removeformat|indent outdent alignleft aligncenter alignright alignjustify|bullist numlist table',
-          'preview searchreplace  fullpage charmap media blockquote hr codesample',
+          'undo redo|forecolor backcolor bold italic underline strikethrough link fontsizeselect styleselect removeformat|indent outdent alignleft aligncenter alignright alignjustify|bullist numlist table',
+          'preview image fullpage charmap media blockquote hr selectall searchreplace imagetools',
         ]
       },
     },
@@ -109,7 +101,8 @@ export default {
           plugins = this.plugins,
           toolbar = this.toolbar,
           images_upload_url = this.imagesUploadUrl,
-          handlerImageUpload= this.handlerImageUpload
+          handlerImageUpload= this.handlerImageUpload,
+          placeholder=this.$attrs.placeholder
         return {
           // 选择配置器
           selector: '#' + id,
@@ -117,18 +110,23 @@ export default {
           plugins,
           // 汉化语言包(需要先下载资源)
           language: 'zh_CN',
+          paste_data_images: true,
+          paste_webkit_styles:'all',
           min_height: 600,
-          relative_urls: true,
+          relative_urls: false,
           language_url: 'https://oa-app-web.lianlianlvyou.com/js/tiny_locale_zh_CN.js',
-          toolbar,
+          // '/static/langs/zh_CN.js',
+          content_style:"img{max-width:100%}",
+          content_css:['https://oa-app-web.lianlianlvyou.com/css/tiny_mce_content.min.css','https://oa-app-web.lianlianlvyou.com/css/tiny_mce_default_content.css'],
+          toolbar,  
+          // 允许自定义添加图片的样式
+          image_advtab: true,
           // 上传图片的地址
           images_upload_url,
           images_upload_handler:handlerImageUpload?handlerImageUpload:null,
-          // 自动获取焦点
-          auto_focus: true,
           // tinymce技术支持图标
           branding: false,
-          placeholder: '......',
+          placeholder: placeholder,
           // 图片标题
           image_caption: true,
           // 文件编码
@@ -137,11 +135,17 @@ export default {
           resize: false,
           // dom状态栏
           statusbar: false,
-          toolbar_sticky: true,
+          // toolbar_sticky: true,
           setup: (editor) => {
+            editor.on(
+              'init', () => {
+                // 抛出 'on-ready' 事件钩子
+                this.$emit('on-ready','come from init')   
+              }
+            )
             // 抛出 'input' 事件钩子，同步value数据
             editor.on(
-              'input change undo redo', () => {
+              'input change undo redo', (e) => {
                 this.$emit('input', editor.getContent())
               }
             )
@@ -159,4 +163,8 @@ export default {
  
 }
 </script>
+
+<style lang="scss">
+// @import 'edit';
+</style>
 

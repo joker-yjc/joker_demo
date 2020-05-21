@@ -1,21 +1,13 @@
-/*
- * @Description:
- * @Autor: Yao
- * @Date: 2019-11-01 09:44:11
- * @LastEditors: joker_yjc
- * @LastEditTime: 2020-05-19 12:08:03
- */
-
-const webpack = require("webpack");
-const path = require("path");
+const webpack = require('webpack')
+const path = require('path')
 // 更新html
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 每次打包后清理dist
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
-  mode: "production",
+  mode: 'production',
   entry: './src/index.js',
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -28,6 +20,7 @@ module.exports = {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, '../dist'),
     chunkFilename: '[name].[hash].js',
+    publicPath: './',
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -35,7 +28,7 @@ module.exports = {
     new HtmlWebpackPlugin({ template: './public/index.html' }),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, './static'),
+        from: path.resolve(__dirname, '../src/static'),
         to: './static',
         ignore: ['.*'],
       },

@@ -1,10 +1,3 @@
-/*
- * @Description:
- * @Autor: Yao
- * @Date: 2019-11-06 15:31:24
- * @LastEditors: joker_yjc
- * @LastEditTime: 2020-05-19 11:57:47
- */
 const webpack = require('webpack')
 const path = require('path')
 // 更新html
@@ -26,7 +19,7 @@ module.exports = {
   },
   output: {
     filename: 'main.[hash].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     chunkFilename: '[name].[hash].js',
   },
   // 追踪源文件
@@ -52,14 +45,14 @@ module.exports = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: './public/index.html',
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, './static'),
-        to: './static',
+        from: path.resolve(__dirname, '../src/static'),
+        to: '/static',
         ignore: ['.*'],
       },
     ]),
