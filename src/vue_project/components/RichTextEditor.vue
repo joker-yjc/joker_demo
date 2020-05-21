@@ -43,7 +43,7 @@ export default {
       return tinymce.editors[this.id].getContent()
     },
     // 设置内容
-    setContent(content){
+    setContent(content) {
       return tinymce.editors[this.id].setContent(content)
     },
     // 插入内容
@@ -60,7 +60,7 @@ export default {
     },
     destory() {
       tinymce.editors[this.id] && tinymce.editors[this.id].destroy()
-    }
+    },
   },
   props: {
     // id
@@ -70,7 +70,8 @@ export default {
     },
     plugins: {
       type: String,
-      default:'paste hr fullpage charmap advlist autolink link image imagetools lists preview  media searchreplace table  autoresize',
+      default:
+        'paste hr fullpage charmap advlist autolink link image imagetools lists preview  media searchreplace table  autoresize',
     },
     toolbar: {
       type: Array,
@@ -82,27 +83,28 @@ export default {
       },
     },
     imagesUploadUrl: {
-      type: String
+      type: String,
     },
-     // 组件可以通过传递一个prop----handlerImageUpload方法来自定义上传图片
-    handlerImageUpload:{
+    // 组件可以通过传递一个prop----handlerImageUpload方法来自定义上传图片
+    handlerImageUpload: {
       // 接收三个参数 blobInfo, 类似用法如下
-            // let formData = new FormData()
-            // formData.append('file', blobInfo.blob(), blobInfo.filename())
-        // success 成功时候的回调函数 需要传入文件上传后的地址
-        // failure 文件失败后的回调函数 传入用于提示的信息
-      type:Function
+      // let formData = new FormData()
+      // formData.append('file', blobInfo.blob(), blobInfo.filename())
+      // success 成功时候的回调函数 需要传入文件上传后的地址
+      // failure 文件失败后的回调函数 传入用于提示的信息
+      type: Function,
     },
     // 有插件默认配置项
     option: {
       type: Object,
       default: function () {
-        let id = this.id,
-          plugins = this.plugins,
-          toolbar = this.toolbar,
-          images_upload_url = this.imagesUploadUrl,
-          handlerImageUpload= this.handlerImageUpload,
-          placeholder=this.$attrs.placeholder
+        const id = this.id
+        const plugins = this.plugins
+        const toolbar = this.toolbar
+       /* eslint-disable */
+        const images_upload_url = this.imagesUploadUrl
+        const handlerImageUpload = this.handlerImageUpload
+        const placeholder = this.$attrs.placeholder
         return {
           // 选择配置器
           selector: '#' + id,
@@ -111,19 +113,23 @@ export default {
           // 汉化语言包(需要先下载资源)
           language: 'zh_CN',
           paste_data_images: true,
-          paste_webkit_styles:'all',
+          paste_webkit_styles: 'all',
           min_height: 600,
           relative_urls: false,
-          language_url: 'https://oa-app-web.lianlianlvyou.com/js/tiny_locale_zh_CN.js',
+          language_url:
+            'https://oa-app-web.lianlianlvyou.com/js/tiny_locale_zh_CN.js',
           // '/static/langs/zh_CN.js',
-          content_style:"img{max-width:100%}",
-          content_css:['https://oa-app-web.lianlianlvyou.com/css/tiny_mce_content.min.css','https://oa-app-web.lianlianlvyou.com/css/tiny_mce_default_content.css'],
-          toolbar,  
+          content_style: 'img{max-width:100%}',
+          content_css: [
+            'https://oa-app-web.lianlianlvyou.com/css/tiny_mce_content.min.css',
+            'https://oa-app-web.lianlianlvyou.com/css/tiny_mce_default_content.css',
+          ],
+          toolbar,
           // 允许自定义添加图片的样式
           image_advtab: true,
           // 上传图片的地址
           images_upload_url,
-          images_upload_handler:handlerImageUpload?handlerImageUpload:null,
+          images_upload_handler: handlerImageUpload || null,
           // tinymce技术支持图标
           branding: false,
           placeholder: placeholder,
@@ -137,19 +143,15 @@ export default {
           statusbar: false,
           // toolbar_sticky: true,
           setup: (editor) => {
-            editor.on(
-              'init', () => {
-                // 抛出 'on-ready' 事件钩子
-                this.$emit('on-ready','come from init')   
-              }
-            )
+            editor.on('init', () => {
+              // 抛出 'on-ready' 事件钩子
+              this.$emit('on-ready', 'come from init')
+            })
             // 抛出 'input' 事件钩子，同步value数据
-            editor.on(
-              'input change undo redo', (e) => {
-                this.$emit('input', editor.getContent())
-              }
-            )
-          }
+            editor.on('input change undo redo', (e) => {
+              this.$emit('input', editor.getContent())
+            })
+          },
         }
       },
     },
@@ -159,12 +161,10 @@ export default {
   },
   beforeDestroy() {
     this.destory()
-  }
- 
+  },
 }
 </script>
 
 <style lang="scss">
 // @import 'edit';
 </style>
-
