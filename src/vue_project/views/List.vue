@@ -1,20 +1,12 @@
 <template>
   <div>
-    <!-- <socket-message @message="handleMessage" ref="socket" /> -->
-    <br />
-    <hr />
-    <richTextEditor v-model="msg" />
+    <input type="text" v-model="msg"/>
     <button @click="(e) => sendMessage()">发送信息</button>
-    <div>
-      <ul>
-        <li v-for="(item, index) in msgList" :key="index" v-html="item"></li>
-      </ul>
-    </div>
+    <hr>
+    <iframe id="sendBox" src="http://localhost:3000/photos" style="width:100%;height:400px"></iframe>
   </div>
 </template>
 <script>
-// import socketMessage from '../components/SocketMessage.vue'
-import richTextEditor from '../components/RichTextEditor.vue'
 export default {
   data() {
     return {
@@ -22,16 +14,12 @@ export default {
       msgList: [],
     }
   },
-  components: { richTextEditor },
   methods: {
-    handleMessage(str) {
-      this.msgList.push(str)
-    },
     sendMessage(str = this.msg) {
+     let box= document.querySelector('#sendBox')
       if (str) {
-        console.log(str)
-        // this.$refs.socket&&this.$refs.socket.sendMessage(str)
-        // this.msg=''
+        console.log(str,box)
+        box.contentWindow.postMessage(str,'http://localhost:3000')
       }
     },
   },
