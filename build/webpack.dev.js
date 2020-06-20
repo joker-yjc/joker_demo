@@ -23,7 +23,7 @@ module.exports = {
     chunkFilename: '[name].[hash].js',
   },
   // 追踪源文件
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     stats: 'errors-only',
     contentBase: path.resolve(__dirname, 'dist'),

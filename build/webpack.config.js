@@ -16,6 +16,7 @@ module.exports = {
       '@': path.resolve(__dirname, '../src'),
     },
   },
+  devtool: 'cheap-module-source-map',
   output: {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, '../dist'),
