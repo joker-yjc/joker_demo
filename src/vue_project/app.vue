@@ -9,12 +9,28 @@
         <router-link to="/vue/about">vue/about</router-link>
       </div>-->
     </div>
-    <router-view v-show="$route.name"></router-view>
-    <div v-show="!$route.name" id="iframe"></div>
+    <!-- <router-view v-show="$route.name"></router-view>
+    <div v-show="!$route.name" id="iframe"></div> -->
+    <ul>
+      <li v-for='(item,index) in arr' :key="item" @click="e=>changeItem(index)">{{item}}</li>
+    </ul>
   </div>
 </template>
 <script>
-export default {}
+export default {
+  data(){
+    return {
+      arr:[1,2,3,4,5]
+    }
+  },
+  methods: {
+    changeItem(index){
+      console.log(index)
+      // this.arr[index] = 'a'
+      this.arr.push(this.arr.length+1)
+    }
+  }
+}
 </script>
 <style lang="scss">
 html,
