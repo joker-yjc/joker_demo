@@ -25,8 +25,6 @@ export default {
   },
   methods: {
     changeItem(index){
-      console.log(index)
-      // this.arr[index] = 'a'
       this.arr.push(this.arr.length+1)
     }
   }
