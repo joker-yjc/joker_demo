@@ -20,7 +20,8 @@
 export default {
   data(){
     return {
-      arr:[1,2,3,4,5]
+      arr:[1,2,3,4,5],
+      color:"red"
     }
   },
   methods: {
@@ -30,11 +31,14 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style  :vars="{color}">
 html,
 body {
   height: 100%;
   padding: 0;
   margin: 0;
+}
+li{
+  color:var(--color)
 }
 </style>
