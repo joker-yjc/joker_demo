@@ -10,25 +10,33 @@
       </div>-->
     </div>
     <!-- <router-view v-show="$route.name"></router-view>
-    <div v-show="!$route.name" id="iframe"></div> -->
+    <div v-show="!$route.name" id="iframe"></div>-->
     <ul>
-      <li v-for='(item,index) in arr' :key="item" @click="e=>changeItem(index)">{{item}}</li>
+      <li v-for="(item,index) in arr" :key="item" @click="e=>changeItem(index)">{{item}}</li>
     </ul>
+    <SlotTest>
+      <template v-slot="props">{{props}}</template>
+    </SlotTest>
+    <input type="file" webkitdirectory />
   </div>
 </template>
 <script>
+import SlotTest from '@/vue_project/components/SlotTest.vue'
 export default {
-  data(){
+  components: {
+    SlotTest,
+  },
+  data() {
     return {
-      arr:[1,2,3,4,5],
-      color:"red"
+      arr: [1, 2, 3, 4, 5],
+      color: 'red',
     }
   },
   methods: {
-    changeItem(index){
-      this.arr.push(this.arr.length+1)
-    }
-  }
+    changeItem(index) {
+      this.arr.push(this.arr.length + 1)
+    },
+  },
 }
 </script>
 <style  :vars="{color}">
@@ -38,7 +46,7 @@ body {
   padding: 0;
   margin: 0;
 }
-li{
-  color:var(--color)
+li {
+  color: var(--color);
 }
 </style>
