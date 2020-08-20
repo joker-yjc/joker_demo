@@ -18,6 +18,7 @@
       <template v-slot="props">{{props}}</template>
     </SlotTest>
     <input type="file" webkitdirectory />
+    <router-view ></router-view>
   </div>
 </template>
 <script>
