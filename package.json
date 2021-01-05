@@ -48,7 +48,7 @@
     "webpack-manifest-plugin": "^2.2.0"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "lrz": "^4.9.40",
     "nodejs-websocket": "^1.7.2",
     "qiankun": "^2.0.11",
